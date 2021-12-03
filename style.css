@@ -72,6 +72,10 @@ button:hover {
     padding-bottom: 2.5em;
 }
 
+.after p {
+    font-size: 1.2em;
+}
+
 #after__weeks-container > div {
     height: 15px;
     width: 15px;
