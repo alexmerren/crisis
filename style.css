@@ -1,3 +1,5 @@
+/* Index page styles */
+
 @font-face {
     font-family: Nexa;
     src: url(font/NexaDemo-Bold.woff);
@@ -97,4 +99,24 @@ button:hover {
 
 .footer p {
     margin: 0 15px;
+}
+
+/* Age page styles */
+
+#age, #age__display__parent {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+#age__display__parent {
+    display: none;
+}
+
+#age__display {
+    font-size: 10rem;
+    width: 1200px;
+    overflow: hidden;
 }
