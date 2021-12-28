@@ -98,7 +98,7 @@ button:hover {
     position: relative;
     bottom: 0;
     width: 100%;
-    height: 2.5em;
+    height: 5em;
     margin-bottom: 2em;
     display: flex;
     flex-flow: row nowrap;
@@ -137,6 +137,5 @@ button:hover {
 
 #age__display {
     font-size: 10rem;
-    width: 1125px;
-    overflow: hidden;
+    width: 1150px;
 }
