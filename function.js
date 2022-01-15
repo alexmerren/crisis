@@ -1,12 +1,3 @@
-function inputValidation(elementName) {
-    let dateEl = document.getElementById(elementName);
-    let birthday = new Date(dateEl.value);
-    if (isNaN(birthday)) {
-        return null;
-    }
-    return birthday;
-}
-
 function Index_DisplayAgeAndCalendar() {
     // Perform input validation and get birthday
     birthday = inputValidation("header__dateInput");
@@ -14,7 +5,7 @@ function Index_DisplayAgeAndCalendar() {
         return;
     }
     displayAge(birthday, "after__age")
-    displayCalendar(birthday)
+    displayCalendar(birthday, "after", "after__weeks-container")
 }
 
 function Age_DisplayAge() {
@@ -32,6 +23,15 @@ function Age_DisplayAge() {
     displayAge(birthday, "age__display")
 }
 
+function inputValidation(elementName) {
+    let dateEl = document.getElementById(elementName);
+    let birthday = new Date(dateEl.value);
+    if (isNaN(birthday)) {
+        return null;
+    }
+    return birthday;
+}
+
 function displayAge(birthday, elementName) {
     // Get the reference for the specified element, and constantly refresh the number
     let ageEl = document.getElementById(elementName);
@@ -41,17 +41,17 @@ function displayAge(birthday, elementName) {
     }, 50);
 }
 
-function displayCalendar(birthday) {
-    document.getElementById("after").style.display = "flex";
+function displayCalendar(birthday, parentElement, element) {
+    document.getElementById(parentElement).style.display = "flex";
     let currentAge = dayjs().diff(dayjs(birthday), 'year', true);
     let currentAgeInWeeks = currentAge * 52;
     let totalWeeksInLife = 71 * 52;
     for (let i = 0; i < totalWeeksInLife; ++i) {
         if (i % 52 == 0) {
-            document.getElementById("after__weeks-container").appendChild(document.createElement("br"));
+            document.getElementById(element).appendChild(document.createElement("br"));
             let number = document.createElement("p");
             number.innerHTML = i / 52;
-            document.getElementById("after__weeks-container").appendChild(number);
+            document.getElementById(element).appendChild(number);
         }
 
         let weekDiv = document.createElement("div");
@@ -59,11 +59,12 @@ function displayCalendar(birthday) {
             weekDiv.style.backgroundColor = "black";
         }
 
-        if (i == currentAgeInWeeks) {
+        if (i === Math.floor(currentAgeInWeeks)) {
             weekDiv.style.backgroundColor = "#E26D5A";
+            weekDiv.style.border = "1px #E26D5A solid";
         }
 
-        document.getElementById("after__weeks-container").appendChild(weekDiv);
+        document.getElementById(element).appendChild(weekDiv);
     }
 }
 
