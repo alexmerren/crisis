@@ -1,18 +1,37 @@
-function Index_DisplayAgeAndCalendar() {
-    // Perform input validation and get birthday
-    birthday = inputValidation("header__dateInput");
-    if (birthday == null) {
-        return;
+// Check if cookies are set, and load the calendar and timer if it is.
+window.addEventListener("load", () => {
+    let birthdayCookie = getCookie('birthday');
+    if (birthdayCookie) {
+        Index_DisplayAgeAndCalendar(birthdayCookie);
     }
-    displayAge(birthday, "after__age")
-    displayCalendar(birthday, "after", "after__weeks-container")
+});
+
+function Index_DisplayAgeAndCalendar(optionalBirthday) {
+    let birthday;
+
+    if (optionalBirthday != null) {
+        birthday = optionalBirthday;
+    }
+
+    if (inputValidation("header__dateInput") != null) {
+        birthday = inputValidation("header__dateInput");
+        setCookie('birthday', birthday);
+    }
+
+    displayAge(birthday, "after__age");
+    displayCalendar(birthday, "after", "after__weeks-container");
 }
 
-function Age_DisplayAge() {
-    // Perform input validation and get birthday
-    birthday = inputValidation("age__dateInput");
-    if (birthday == null) {
-        return;
+function Age_DisplayAge(optionalBirthday) {
+    let birthday;
+
+    if (optionalBirthday != null) {
+        birthday = optionalBirthday;
+    }
+
+    if (inputValidation("age__dateInput") != null) {
+        birthday = inputValidation("age__dateInput");
+        setCookie('birthday', birthday);
     }
 
     // Hide the input and show the age display
@@ -20,11 +39,15 @@ function Age_DisplayAge() {
     document.getElementById("age__display__parent").style.display = "flex";
     
     // Display the gae in the age__display element
-    displayAge(birthday, "age__display")
+    displayAge(birthday, "age__display");
 }
 
 function inputValidation(elementName) {
     let dateEl = document.getElementById(elementName);
+    if (!dateEl) {
+        return null;
+    }
+
     let birthday = new Date(dateEl.value);
     if (isNaN(birthday)) {
         return null;
@@ -68,3 +91,23 @@ function displayCalendar(birthday, parentElement, element) {
     }
 }
 
+// These cookie functions are taken from https://stackoverflow.com/questions/14573223/set-cookie-and-get-cookie-with-javascript
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+function setCookie(name, value) {
+    var expires = "";
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/; SameSite=None; Secure";
+}
+
+function eraseCookie(name) {
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
