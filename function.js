@@ -18,7 +18,7 @@ function Index_DisplayAgeAndCalendar(birthday) {
   }
 
   if (urlParams.get("birthday") != birthday) {
-    birthday = dayjs(birthday, "YYYY MM DD");
+    birthday = dayjs(birthday).format("DD MMM YYYY");
     urlParams.set("birthday", birthday);
     document.location.search = urlParams.toString();
   }
@@ -38,7 +38,7 @@ function Age_DisplayAge(birthday) {
   document.getElementById("age__display__parent").style.display = "flex";
   
   if (urlParams.get("birthday") != birthday) {
-    birthday = dayjs(birthday, "YYYY MM DD");
+    birthday = dayjs(birthday).format("DD MMM YYYY");
     urlParams.set("birthday", birthday);
     document.location.search = urlParams.toString();
   }
