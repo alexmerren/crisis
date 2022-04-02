@@ -23,18 +23,17 @@ function Index_DisplayAgeAndCalendar(birthday) {
     document.location.search = urlParams.toString();
   }
 
-  displayAge(birthday, "after__age");
-  displayLink(birthday, "after__link");
-  displayCalendar(birthday, "after", "after__weeks-container");
+  displayAge(birthday, "content__age");
+  displayCalendar(birthday, "content", "content__calendar");
 }
 
 function Age_DisplayAge(birthday) {
-  if (inputValidation("age__dateInput") != null) {
-    birthday = inputValidation("age__dateInput");
+  if (inputValidation("age__input") != null) {
+    birthday = inputValidation("age__input");
   }
 
   // Hide the input and show the age display
-  document.getElementById("age").style.display = "none";
+  document.getElementById("age__input__parent").style.display = "none";
   document.getElementById("age__display__parent").style.display = "flex";
   
   if (urlParams.get("birthday") != birthday) {
@@ -73,7 +72,7 @@ function displayCalendar(birthday, parentElement, calendarElement) {
   document.getElementById(parentElement).style.display = "flex";
   let currentAge = dayjs().diff(dayjs(birthday), 'year', true);
   let currentAgeInWeeks = currentAge * 52;
-  let totalWeeksInLife = 82 * 52;
+  let totalWeeksInLife = 81.2 * 52;
   for (let i = 0; i < totalWeeksInLife; ++i) {
     // Create the number at the left of the row, and append a break so that it
     // goes to the next line.
@@ -97,5 +96,3 @@ function displayCalendar(birthday, parentElement, calendarElement) {
     document.getElementById(calendarElement).appendChild(weekDiv);
   }
 }
-
-function displayLink(birthday, element) {}
