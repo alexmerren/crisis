@@ -56,17 +56,17 @@ button:hover {
     margin-right: 2em;
 }
 
-#header__other {
+#header__input {
     display: flex;
     flex-flow: column;
 }
 
-#header__other p {
+#header__input p {
     margin: 0;
     margin-bottom: 0.2rem;
 }
 
-.after {
+.content {
     display: none;
     flex-flow: column nowrap;
     justify-content: center;
@@ -74,22 +74,22 @@ button:hover {
     padding-bottom: 2.5em;
 }
 
-.after p {
+.content p {
     font-size: 1.2em;
 }
 
-#after__weeks-container > * {
+#content__calendar > * {
     height: 15px;
     width: 15px;
     margin: auto 1px;
     display: inline-block;
 }
 
-#after__weeks-container > p {
+#content__calendar > p {
     margin-right: 25px;
 }
 
-#after__weeks-container > div {
+#content__calendar > div {
     border-radius: 100%;
     border: 1px black solid;
 }
@@ -111,19 +111,19 @@ button:hover {
 
 /* Age page styles */
 
-#wrapper {
+#content {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
 }
 
-#age {
+#age__input__parent {
     display: flex;
     flex-flow: column nowrap;
 }
 
-#age p {
+#age__input__parent p {
     margin: 0;
     margin-bottom: 0.2rem;
 }
@@ -137,5 +137,7 @@ button:hover {
 
 #age__display {
     font-size: 10rem;
+    display: inline-block;
     width: 1150px;
+    text-align: left;
 }
