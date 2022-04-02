@@ -66,7 +66,7 @@ button:hover {
     margin-bottom: 0.2rem;
 }
 
-.content {
+#index__content {
     display: none;
     flex-flow: column nowrap;
     justify-content: center;
@@ -74,22 +74,22 @@ button:hover {
     padding-bottom: 2.5em;
 }
 
-.content p {
+#index__content p {
     font-size: 1.2em;
 }
 
-#content__calendar > * {
+#index__content__calendar > * {
     height: 15px;
     width: 15px;
     margin: auto 1px;
     display: inline-block;
 }
 
-#content__calendar > p {
+#index__content__calendar > p {
     margin-right: 25px;
 }
 
-#content__calendar > div {
+#index__content__calendar > div {
     border-radius: 100%;
     border: 1px black solid;
 }
@@ -111,7 +111,7 @@ button:hover {
 
 /* Age page styles */
 
-#content {
+#age__content {
     display: flex;
     justify-content: center;
     align-items: center;
