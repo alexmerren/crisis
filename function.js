@@ -23,8 +23,8 @@ function Index_DisplayAgeAndCalendar(birthday) {
     document.location.search = urlParams.toString();
   }
 
-  displayAge(birthday, "content__age");
-  displayCalendar(birthday, "content", "content__calendar");
+  displayAge(birthday, "index__content__age");
+  displayCalendar(birthday, "index__content", "index__content__calendar");
 }
 
 function Age_DisplayAge(birthday) {
