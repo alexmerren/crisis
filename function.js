@@ -4,10 +4,10 @@ var urlParams = new URLSearchParams(queryString);
 window.addEventListener("load", () => {
   let birthday = urlParams.get('birthday');
   if (birthday == null) { return; }
-  if (window.location.pathname == "/") {
+  if (window.location.pathname == "/crisis/") {
     Index_DisplayAgeAndCalendar(birthday);
   }
-  if (window.location.pathname == "/age") {
+  if (window.location.pathname == "/crisis/age") {
     Age_DisplayAge(birthday);
   }
 });
